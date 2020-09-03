@@ -20,8 +20,16 @@ def decode_bits(bits):
 
 
 def decode_morse(morse):
-    
-    return
+    morse_code = morse.split('   ')
+    letters = []
+    for morse_word in morse_code:
+        chars = morse_word.split(' ')
+        for char in chars:
+            for k, v in MORSE_2_ASCII.items():
+                if char == k:
+                    letters.append(v)
+        letters.append(' ')
+    return ''.join(letters).strip()
 
 
 if __name__ == '__main__':
