@@ -15,8 +15,16 @@ from morse_dict import MORSE_2_ASCII
 
 
 def decode_bits(bits):
-    # your code here
-    return
+    bits = bits.strip('0')
+    bits_timing = (min([len(element)
+                   for element in bits.split('1') +
+                   bits.split('0') if element]))
+    bits_new = (bits.replace('0000000' * bits_timing, '   ')
+                .replace('111' * bits_timing, '-')
+                .replace('1' * bits_timing, '.')
+                .replace('000' * bits_timing, ' ')
+                .replace('0' * bits_timing, ''))
+    return bits_new
 
 
 def decode_morse(morse):
